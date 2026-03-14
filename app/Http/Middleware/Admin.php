@@ -12,11 +12,20 @@ class Admin
      *
      * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
+    // public function handle(Request $request, \Closure $next): Response
+    // {
+    //     if (Auth()->user()->usertype == 'admin') {
+    //         return $next($request);
+    //     }
+    //     return redirect('/');
+    // }
+
     public function handle(Request $request, \Closure $next): Response
-    {
-        if (Auth()->user()->usertype == 'admin') {
-            return $next($request);
-        }
-        return redirect('/home');
+{
+    if (auth()->check() && auth()->user()->usertype === 'admin') {
+        return $next($request);
     }
+
+    return redirect('/');
+}
 }
