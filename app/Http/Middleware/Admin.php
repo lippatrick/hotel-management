@@ -21,11 +21,15 @@ class Admin
     // }
 
     public function handle(Request $request, \Closure $next): Response
-{
-    if (auth()->check() && auth()->user()->usertype === 'admin') {
-        return $next($request);
-    }
+    {
+        if (!auth()->check()) {
+            return redirect('/');
+        }
 
-    return redirect('/');
-}
+        if (auth()->user()->usertype === 'admin') {
+            return $next($request);
+        }
+
+        return redirect('/');
+    }
 }
