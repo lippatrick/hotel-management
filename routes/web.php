@@ -17,7 +17,7 @@ Route::middleware([
 
 route::get('/', [AdminController::class, 'home']);
 
-route::get('/home', [AdminController::class, 'index'])->middleware(['auth', 'admin']);
+route::get('/home', [AdminController::class, 'index']);
 
 route::get('/create_room', [AdminController::class, 'create_room'])->middleware(['auth', 'admin'])->middleware(['auth', 'admin']);
 
