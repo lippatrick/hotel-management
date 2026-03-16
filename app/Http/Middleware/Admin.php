@@ -20,16 +20,16 @@ class Admin
     //     return redirect('/');
     // }
 
-    public function handle(Request $request, \Closure $next): Response
-    {
-        if (!auth()->check()) {
-            return redirect('/');
-        }
+    // public function handle(Request $request, \Closure $next): Response
+    // {
+    //     if (!auth()->check()) {
+    //         return redirect('/');
+    //     }
 
-        if (auth()->user()->usertype === 'admin') {
-            return $next($request);
-        }
+    //     if (auth()->user()->usertype === 'admin') {
+    //         return $next($request);
+    //     }
 
-        return redirect('/');
-    }
+    //     return redirect('/');
+    // }
 }
